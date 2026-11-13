@@ -495,7 +495,7 @@ html.intro-on .intro { display: flex; animation: introLift 0.75s cubic-bezier(0.
         </a>
         <a class="textlink" href="#how">See how it works</a>
       </div>
-      <p class="hero-note rise" style="--d: 1.05s">Seven quick questions. If it's a fit, you pick a call time on the spot.</p>
+      <p class="hero-note rise" style="--d: 1.05s">Seven quick questions, then pick a call time that suits you.</p>
     </div>
 
     <figure class="score rise" style="--d: 1.1s" aria-label="Your part is creating and going live at launch. Continuo runs eight things underneath, the whole time.">
@@ -622,7 +622,7 @@ html.intro-on .intro { display: flex; animation: introLift 0.75s cubic-bezier(0.
   <div class="wrap">
     <h2 id="how-title" data-reveal>How it works</h2>
     <ol class="steps" data-stagger>
-      <li><div class="panel"><span class="num" aria-hidden="true">1</span><h3>Check your fit, book a call</h3><p>Answer seven quick questions. If it's a fit, pick a 30 minute call right away. I bring a one page plan for your account: three product ideas, the prices, and how the split works.</p></div></li>
+      <li><div class="panel"><span class="num" aria-hidden="true">1</span><h3>Answer, then book a call</h3><p>Answer seven quick questions, then pick a 30 minute call. I bring a one page plan for your account: three product ideas, the prices, and how the split works.</p></div></li>
       <li><div class="panel"><span class="num" aria-hidden="true">2</span><h3>Agree the deal</h3><p>If the plan makes sense to you, we agree the split and put it in writing before anything gets built.</p></div></li>
       <li><div class="panel"><span class="num" aria-hidden="true">3</span><h3>Build and launch</h3><p>We build the product and everything around it. You review it, then go live during launch week while we run sales and support.</p></div></li>
       <li><div class="panel"><span class="num" aria-hidden="true">4</span><h3>Grow</h3><p>The launch becomes an always on funnel, the next product goes up the ladder, and you get a report every month.</p></div></li>
@@ -651,7 +651,7 @@ html.intro-on .intro { display: flex; animation: introLift 0.75s cubic-bezier(0.
       <div data-reveal>
         <h3>A good fit</h3>
         <ul class="squares">
-          <li>You have 10k to 300k followers who actually engage.</li>
+          <li>You have an audience that actually engages with you.</li>
           <li>Your audience keeps asking you how to do what you do.</li>
           <li>You have no product yet, or one that undersells.</li>
           <li>You'll go live during launches.</li>
@@ -711,7 +711,7 @@ html.intro-on .intro { display: flex; animation: introLift 0.75s cubic-bezier(0.
   </div>
   <div class="wrap">
     <h2 id="apply-title" data-reveal>Get your <span class="hl">free</span> plan</h2>
-    <p class="lead" data-reveal style="--i: 1">Seven quick questions, about a minute. If we're a fit, you pick a call time on the next screen.</p>
+    <p class="lead" data-reveal style="--i: 1">Seven quick questions, about a minute. Then you pick a call time on the next screen.</p>
 
     <div class="quiz" id="quiz" data-reveal="scale" style="--i: 2">
       <div class="quiz-top"><span id="q-step">Before we start</span><span id="q-count"></span></div>
@@ -976,7 +976,7 @@ const BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules
     { id: "asks", title: "Do people ask you how to do what you do?", sub: "In comments, DMs, replies.", wide: true, options: [["All the time", "Every week"], ["Sometimes", "A few times a month"], ["Rarely", "It doesn't really come up"]] },
     { id: "income", title: "Where does most of your income come from today?", sub: "Your biggest source right now.", options: [["Brand deals"], ["Platform payouts"], ["Coaching or clients"], ["My own products"], ["Not monetised yet"]] },
     { id: "live", title: "During a launch week, will you go live and show up?", sub: "Launches sell when you're in the room.", wide: true, options: [["Yes", "I can commit to that"], ["Probably", "Depends on the week"], ["No", "I'd rather not"]] },
-    { id: "details", title: "Where should we send your plan?", sub: "We reply from Mustafa directly." }
+    { id: "details", title: "Last step: your details", sub: "So I can look at your account before we talk." }
   ];
   const points = {
     followers: { "Under 10k": 0, "10k to 50k": 20, "50k to 100k": 28, "100k to 300k": 30, "Over 300k": 22 },
@@ -1048,7 +1048,7 @@ const BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules
   const score = () => {
     const s = (points.followers[answers.followers] || 0) + (points.asks[answers.asks] || 0) + (points.income[answers.income] || 0) + (points.live[answers.live] || 0);
     let tier = "Good";
-    if (answers.followers === "Under 10k" || answers.live === "No" || s < 50) tier = "Not now";
+    if (answers.followers === "Under 10k" || answers.live === "No" || s < 50) tier = "Low";
     else if (s >= 75) tier = "Priority";
     return { s, tier };
   };
@@ -1067,8 +1067,7 @@ const BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules
     if (tier === "Good") {
       return '<div class="screen result">' + mark + '<span class="tier tier--good">Looks like a fit</span><h3 class="q-title" tabindex="-1">Thanks, ' + name + ". Let's talk.</h3>" + book + "</div>";
     }
-    return '<div class="screen result"><span class="tier tier--later">Not quite yet</span><h3 class="q-title" tabindex="-1">Thanks, ' + name + ". Honest answer: not yet.</h3>" +
-      "<p>Right now we partner with creators who have 10k or more engaged followers and can go live during launches. Your details are saved, and we'll reach out when the timing is right.</p></div>";
+    return '<div class="screen result">' + mark + '<h3 class="q-title" tabindex="-1">Thanks, ' + name + ". Let's talk it through.</h3>" + book + "</div>";
   };
 
   const burst = () => {
@@ -1125,7 +1124,7 @@ const BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules
       await fetch(FORM_ENDPOINT, { method: "POST", mode: "no-cors", body: data });
       index = steps.length;
       swap(resultScreen(tier));
-      if (tier !== "Not now") setTimeout(burst, 260);
+      setTimeout(burst, 260);
     } catch (e) {
       btn.disabled = false;
       btn.firstChild.textContent = "See if we're a fit";
