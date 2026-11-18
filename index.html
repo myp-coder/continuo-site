@@ -58,8 +58,6 @@ h1 .hl { color: var(--accent); }
 h2 { font-size: clamp(32px, 4.6vw, 58px); font-weight: 800; font-stretch: 112%; line-height: 1.04; letter-spacing: -0.015em; max-width: 19ch; }
 p { margin: 0; }
 .lead { font-size: clamp(19px, 1.9vw, 22px); line-height: 1.6; color: var(--muted); max-width: 34em; margin-top: 24px; }
-sup { font-size: 0.62em; font-weight: 800; line-height: 0; }
-sup a { text-decoration: none; color: var(--lavender); padding: 0 1px; }
 
 /* Header */
 .topbar { position: sticky; top: 0; z-index: 30; background: rgba(4, 5, 10, 0.68); -webkit-backdrop-filter: blur(14px) saturate(140%); backdrop-filter: blur(14px) saturate(140%); border-bottom: 1px solid var(--line); }
@@ -171,7 +169,7 @@ sup a { text-decoration: none; color: var(--lavender); padding: 0 1px; }
 .stat::after { content: ""; position: absolute; left: 0; top: 0; height: 1px; width: 100%; background: var(--grad); transform: scaleX(0); transform-origin: left; transition: transform 1.2s var(--ease-out) 0.3s; box-shadow: 0 0 10px rgba(124, 92, 245, 0.8); }
 .stat.in::after, .reveal-all .stat::after { transform: scaleX(1); }
 .stat dt { font-family: var(--font-display); font-weight: 800; font-stretch: 120%; font-size: clamp(60px, 7vw, 100px); line-height: 1; letter-spacing: -0.03em; background: linear-gradient(180deg, #E2D8FF 0%, #B9A4FF 35%, #9374FA 65%, #7353F0 100%); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 0 24px rgba(124, 92, 245, 0.35)); font-variant-numeric: tabular-nums; }
-.stat dd { margin: 16px 0 0; color: var(--muted); }
+.stat dd { margin: 16px 0 0; color: var(--muted); text-wrap: pretty; }
 
 /* Deal */
 .terms { margin: 44px 0 0; border-top: 1px solid var(--line); }
@@ -190,18 +188,16 @@ sup a { text-decoration: none; color: var(--lavender); padding: 0 1px; }
 
 /* Footer */
 .footer { background: #030409; color: var(--muted); padding: 44px 0 52px; border-top: 1px solid var(--line); font-size: 15px; position: relative; }
-.footer-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 40px; }
+.footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px 40px; }
 .footer .wordmark { font-size: 19px; }
-.footer p { margin-top: 14px; max-width: 30em; }
-.sources-title { font-family: var(--font-display); font-weight: 800; color: var(--text); font-size: 15px; }
-.sources { margin: 12px 0 0; padding-left: 22px; display: grid; gap: 6px; font-size: 14px; }
-.sources a { color: var(--muted); text-decoration-color: rgba(162, 170, 192, 0.5); text-underline-offset: 3px; }
-.sources a:hover { color: var(--text); }
+.footer-tag { margin-top: 14px; max-width: 40em; text-wrap: pretty; }
+.footer-meta { text-align: right; }
+.footer-meta p + p { margin-top: 4px; }
 
 /* Responsive */
 @media (max-width: 860px) {
   .stats { grid-template-columns: 1fr; gap: 32px; }
-  .footer-grid { grid-template-columns: 1fr; }
+  .footer-meta { text-align: left; }
 }
 @media (max-width: 760px) {
   body { font-size: 17px; }
@@ -295,18 +291,19 @@ sup a { text-decoration: none; color: var(--lavender); padding: 0 1px; }
 <section class="band band--deep glow-left" aria-labelledby="facts-title">
   <div class="wrap">
     <h2 id="facts-title" data-reveal>Brands decide what most creators earn.</h2>
+    <!-- Sources. 81% and 2%: #paid Creator Signals 2026, via Net Influencer, https://www.netinfluencer.com/survey-81-percent-of-creators-rely-on-brand-deals-as-primary-income-amid-life-milestones/ . $10B+: Tubefilter 2025, https://www.tubefilter.com/2025/08/07/patreon-kajabi-10-billion-creator-economy-payouts-funding-since-launch/ -->
     <dl class="stats" data-stagger>
       <div class="stat">
         <dt data-count="81" data-suffix="%">81%</dt>
-        <dd>of creators say brand deals are their main income.<sup><a href="#src-1" aria-label="Source 1">1</a></sup></dd>
+        <dd>of creators say brand deals are their main income.</dd>
       </div>
       <div class="stat">
         <dt data-count="2" data-suffix="%">2%</dt>
-        <dd>say it's their own digital products.<sup><a href="#src-1" aria-label="Source 1">1</a></sup></dd>
+        <dd>say it's their own digital products.</dd>
       </div>
       <div class="stat">
         <dt data-count="10" data-prefix="$" data-suffix="B+">$10B+</dt>
-        <dd>earned by creators selling their own courses and programs on Kajabi alone.<sup><a href="#src-2" aria-label="Source 2">2</a></sup></dd>
+        <dd>earned by creators selling their own courses and programs on Kajabi alone.</dd>
       </div>
     </dl>
   </div>
@@ -349,18 +346,14 @@ sup a { text-decoration: none; color: var(--lavender); padding: 0 1px; }
 </main>
 
 <footer class="footer">
-  <div class="wrap footer-grid">
+  <div class="wrap footer-row">
     <div>
       <a class="wordmark" href="#top"><span class="mark" aria-hidden="true"></span><span class="word">Continuo</span></a>
-      <p>Products for creators, built and sold with you on a revenue split. Dubai, United Arab Emirates.</p>
-      <p>&copy; 2026 Continuo</p>
+      <p class="footer-tag">Products for creators, built and sold with you on a revenue split.</p>
     </div>
-    <div>
-      <p class="sources-title">Sources</p>
-      <ol class="sources">
-        <li id="src-1"><a href="https://www.netinfluencer.com/survey-81-percent-of-creators-rely-on-brand-deals-as-primary-income-amid-life-milestones/" rel="noopener" target="_blank">#paid, Creator Signals 2026, via Net Influencer</a></li>
-        <li id="src-2"><a href="https://www.tubefilter.com/2025/08/07/patreon-kajabi-10-billion-creator-economy-payouts-funding-since-launch/" rel="noopener" target="_blank">Tubefilter, Kajabi passes USD 10 billion in creator earnings, 2025</a></li>
-      </ol>
+    <div class="footer-meta">
+      <p>Dubai, United Arab Emirates</p>
+      <p>&copy; 2026 Continuo</p>
     </div>
   </div>
 </footer>
