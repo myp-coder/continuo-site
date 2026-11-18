@@ -44,6 +44,7 @@
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; background: var(--void); }
 body { margin: 0; background: var(--void); color: var(--text); font-family: var(--font-body); font-size: 18px; line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 a { color: inherit; }
+button { font: inherit; }
 :focus-visible { outline: 3px solid var(--lavender); outline-offset: 3px; border-radius: 4px; }
 
 .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--pad); position: relative; z-index: 2; }
@@ -54,7 +55,7 @@ a { color: inherit; }
 
 h1, h2 { font-family: var(--font-display); margin: 0; text-wrap: balance; color: #FFFFFF; }
 h1 { font-size: clamp(44px, 7.2vw, 96px); font-weight: 800; font-stretch: 116%; line-height: 0.98; letter-spacing: -0.02em; max-width: 15ch; }
-h1 .hl { color: var(--accent); }
+h1 .hl, h2 .hl { color: var(--accent); }
 h2 { font-size: clamp(32px, 4.6vw, 58px); font-weight: 800; font-stretch: 112%; line-height: 1.04; letter-spacing: -0.015em; max-width: 19ch; }
 p { margin: 0; }
 .lead { font-size: clamp(19px, 1.9vw, 22px); line-height: 1.6; color: var(--muted); max-width: 34em; margin-top: 24px; }
@@ -84,6 +85,7 @@ p { margin: 0; }
 .btn svg { width: 18px; height: 18px; flex: none; transition: transform 0.25s var(--ease-out); }
 .btn:hover svg { transform: translateX(4px); }
 .btn--small { padding: 11px 18px; font-size: 15px; box-shadow: none; }
+.btn[disabled] { opacity: 0.6; cursor: progress; }
 .textlink { font-weight: 700; font-size: 17px; color: var(--text); text-decoration: none; background: linear-gradient(var(--violet), var(--violet)) left bottom / 100% 2px no-repeat; padding-bottom: 6px; transition: background-size 0.3s ease; }
 .textlink:hover { background-size: 40% 2px; }
 
@@ -160,6 +162,7 @@ p { margin: 0; }
 
 /* Scroll reveal */
 .js [data-reveal] { opacity: 0; transform: translateY(26px); filter: blur(8px); transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out), filter 0.9s var(--ease-out); transition-delay: calc(var(--i, 0) * 90ms); }
+.js [data-reveal="scale"] { transform: scale(0.94); }
 .js [data-reveal].in, .reveal-all [data-reveal] { opacity: 1; transform: none; filter: none; }
 
 /* Facts */
@@ -178,13 +181,66 @@ p { margin: 0; }
 .terms dd { margin: 0; font-size: 19px; color: #FFFFFF; }
 .terms .zero dd { font-family: var(--font-display); font-weight: 800; font-stretch: 112%; font-size: clamp(22px, 2.6vw, 30px); color: var(--accent); }
 
-/* Talk */
-.talk { text-align: center; background: var(--void); }
-.talk .sky::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 45%; background: linear-gradient(180deg, var(--void) 0%, rgba(4, 5, 10, 0.6) 45%, transparent 100%); z-index: 1; }
-.talk h2 { margin: 0 auto; max-width: 16ch; }
-.talk .lead { margin-left: auto; margin-right: auto; }
-.talk .actions { margin-top: 32px; }
-.byline { margin-top: 40px; font-size: 15px; color: var(--muted); }
+/* Apply: qualifier */
+.apply { background: var(--void); text-align: center; }
+.apply h2 { margin: 0 auto; max-width: 16ch; }
+.apply .lead { margin-left: auto; margin-right: auto; }
+.quiz { position: relative; z-index: 2; max-width: 700px; margin: 48px auto 0; text-align: left; background: #FFFFFF; color: #0B0F1A; border-radius: 20px; padding: clamp(24px, 4.5vw, 48px); box-shadow: 0 40px 120px rgba(0, 0, 0, 0.6), 0 0 80px rgba(124, 92, 245, 0.28); min-height: 470px; display: flex; flex-direction: column; overflow: hidden; }
+.quiz.is-done { min-height: 0; }
+.quiz-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 14px; color: #5B6275; font-weight: 700; margin-bottom: 10px; min-height: 20px; }
+.qbar { height: 6px; border-radius: 3px; background: #EEF0F5; overflow: hidden; margin-bottom: 30px; }
+.qbar span { display: block; height: 100%; width: var(--p, 0%); background: linear-gradient(90deg, #B9A4FF, #7353F0); border-radius: 3px; transition: width 0.6s var(--ease-out); }
+.stage { flex: 1; display: flex; flex-direction: column; }
+.screen { display: flex; flex-direction: column; flex: 1; animation: qIn 0.5s var(--ease-out) both; }
+.screen.out { animation: qOut 0.22s ease both; }
+.screen.out-back { animation: qOutBack 0.22s ease both; }
+@keyframes qIn { from { opacity: 0; transform: translateX(32px); } to { opacity: 1; transform: none; } }
+@keyframes qOut { to { opacity: 0; transform: translateX(-32px); } }
+@keyframes qOutBack { to { opacity: 0; transform: translateX(32px); } }
+.q-title { font-family: var(--font-display); font-weight: 800; font-stretch: 106%; font-size: clamp(24px, 3.2vw, 32px); line-height: 1.15; color: #0B0F1A; margin-bottom: 8px; outline: none; }
+.q-sub { color: #5B6275; font-size: 16px; margin-bottom: 24px; }
+.q-intro p { color: #2A3142; font-size: 17px; margin-bottom: 14px; }
+.opts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.opts--wide { grid-template-columns: 1fr; }
+.opt { display: flex; align-items: center; gap: 14px; text-align: left; width: 100%; padding: 15px 16px; border-radius: 14px; border: 1.5px solid #DADDE6; background: #F7F8FB; color: #0B0F1A; font-weight: 700; font-size: 17px; line-height: 1.3; cursor: pointer; transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease; opacity: 0; animation: riseUp 0.45s var(--ease-out) forwards; animation-delay: calc(0.08s + var(--k, 0) * 55ms); }
+.opt:hover { border-color: var(--pill); background: #F5F1FF; transform: translateY(-2px); }
+.opt[aria-pressed="true"] { border-color: var(--pill); background: #EEE8FF; box-shadow: 0 0 0 4px rgba(124, 92, 245, 0.18); }
+.opt kbd { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; border: 1.5px solid #CBD0DC; font: 700 13px var(--font-body); color: #5B6275; flex: none; background: #FFFFFF; transition: all 0.15s ease; }
+.opt[aria-pressed="true"] kbd { background: var(--pill); border-color: var(--pill); color: #FFFFFF; }
+.opt small { display: block; font-weight: 500; font-size: 14px; color: #5B6275; margin-top: 2px; }
+.q-nav { margin-top: auto; padding-top: 28px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.q-back { background: none; border: 0; font-weight: 700; font-size: 15px; color: #5B6275; cursor: pointer; padding: 10px 4px; }
+.q-back:hover { color: #0B0F1A; }
+.q-hint { font-size: 13px; color: #8A90A2; }
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.field { display: grid; gap: 7px; }
+.field--wide { grid-column: 1 / -1; }
+.field label { font-weight: 700; font-size: 14px; color: #0B0F1A; }
+.field input { font: inherit; font-size: 16px; color: #0B0F1A; background: #F5F6FA; border: 1.5px solid #DADDE6; border-radius: 10px; padding: 13px 14px; width: 100%; transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease; }
+.field input::placeholder { color: #8A90A2; }
+.field input:focus { outline: none; border-color: var(--pill); background-color: #FFFFFF; box-shadow: 0 0 0 4px rgba(124, 92, 245, 0.2); }
+.field input[aria-invalid="true"] { border-color: #D92D20; }
+.trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.q-error { color: #B42318; font-size: 14px; font-weight: 600; margin-top: 12px; min-height: 1px; }
+.q-small { font-size: 13px; color: #5B6275; }
+.result { align-items: flex-start; }
+.result-mark { width: 64px; height: 64px; margin-bottom: 22px; }
+.result-mark circle { stroke: url(#rg); stroke-width: 4; fill: none; stroke-dasharray: 190; stroke-dashoffset: 190; animation: dash 0.9s var(--ease-out) 0.1s forwards; }
+.result-mark path { stroke: #7353F0; stroke-width: 5; fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 50; stroke-dashoffset: 50; animation: dash 0.5s var(--ease-out) 0.7s forwards; }
+@keyframes dash { to { stroke-dashoffset: 0; } }
+.tier { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 800; letter-spacing: 0.02em; padding: 6px 12px; border-radius: 999px; margin-bottom: 14px; }
+.tier--priority { background: #E6DCFF; color: #4A2BB5; }
+.tier--good { background: #F1EEFF; color: #4A3AB8; }
+.tier--later { background: #F2F4F7; color: #475467; }
+.result p { color: #2A3142; font-size: 17px; margin-top: 10px; max-width: 34em; }
+.result .btn { margin-top: 24px; }
+.result .q-small { font-size: 13px; color: #5B6275; margin-top: 12px; }
+.burst { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; }
+
+.apply .sky::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 45%; background: linear-gradient(180deg, var(--void) 0%, rgba(4, 5, 10, 0.6) 45%, transparent 100%); z-index: 1; }
+.apply .byline { margin-top: 36px; font-size: 16px; color: var(--muted); }
+.apply .byline .textlink { font-size: 16px; margin-left: 6px; }
+.apply .byline--sub { margin-top: 18px; font-size: 14px; }
 
 /* Footer */
 .footer { background: #030409; color: var(--muted); padding: 44px 0 52px; border-top: 1px solid var(--line); font-size: 15px; position: relative; }
@@ -212,6 +268,9 @@ p { margin: 0; }
   .nodes li { padding-top: 0; font-size: 16px; }
   .nodes li::before { left: -30px; top: 3px; }
   .terms div { grid-template-columns: 1fr; gap: 6px; }
+  .opts, .fields { grid-template-columns: 1fr; }
+  .q-hint { display: none; }
+  .quiz { min-height: 520px; }
   .topbar .btn--small { padding: 10px 14px; font-size: 14px; }
   .fold { width: 80%; opacity: 0.55; }
   .fold--left { left: -56%; rotate: -6deg; animation: fadeIn 1.6s var(--ease-out) both; }
@@ -235,7 +294,7 @@ p { margin: 0; }
 <header class="topbar">
   <div class="wrap">
     <a class="wordmark" href="#top" aria-label="Continuo, back to top"><span class="mark" aria-hidden="true"></span><span class="word">Continuo</span></a>
-    <a class="btn btn--small btn--mag" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ20cEOhr1XQAVwi_la-ba91DuW1Co_edyngqcU5fYPEqhekZm2JuK1WI91R5XHuN4iJUKLI4Ybw" target="_blank" rel="noopener">Book a call</a>
+    <a class="btn btn--small btn--mag" href="#apply">Get your free plan</a>
   </div>
 </header>
 
@@ -257,14 +316,15 @@ p { margin: 0; }
       <h1 id="hero-title">You make the content. We build <span class="hl">the business</span> underneath it.</h1>
       <p class="lead rise" style="--d: 0.65s">We turn your audience into products you own, then build and sell them with you. Nothing upfront. We only earn when you do.</p>
       <div class="actions rise" style="--d: 0.8s">
-        <a class="btn btn--mag" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ20cEOhr1XQAVwi_la-ba91DuW1Co_edyngqcU5fYPEqhekZm2JuK1WI91R5XHuN4iJUKLI4Ybw" target="_blank" rel="noopener">Book a call
+        <a class="btn btn--mag" href="#apply">Get your free plan
           <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <a class="textlink" href="https://ig.me/m/mypektas" target="_blank" rel="noopener">Or DM me on Instagram</a>
       </div>
+      <p class="note rise" style="--d: 0.95s">Seven quick questions, then pick a call time that suits you.</p>
     </div>
 
-    <figure class="score rise" style="--d: 0.95s" aria-label="Your part is creating and going live at launch. Continuo runs everything else.">
+    <figure class="score rise" style="--d: 1.05s" aria-label="Your part is creating and going live at launch. Continuo runs everything else.">
       <div class="lane lane--you">
         <p class="lane-name">You</p>
         <ul class="you-marks">
@@ -322,7 +382,7 @@ p { margin: 0; }
   </div>
 </section>
 
-<section class="band talk" aria-labelledby="talk-title">
+<section class="band apply" id="apply" aria-labelledby="apply-title">
   <div class="sky" aria-hidden="true">
     <canvas class="stars"></canvas>
     <div class="teal teal--l"></div>
@@ -331,15 +391,26 @@ p { margin: 0; }
     <div class="fold fold--right"><span class="glint"></span></div>
   </div>
   <div class="wrap">
-    <h2 id="talk-title" data-reveal>See what your audience would buy.</h2>
-    <p class="lead" data-reveal style="--i: 1">A free 30 minute call. I look at your account first and bring product ideas, prices and the split we'd propose.</p>
-    <div class="actions" data-reveal style="--i: 2">
-      <a class="btn btn--mag" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ20cEOhr1XQAVwi_la-ba91DuW1Co_edyngqcU5fYPEqhekZm2JuK1WI91R5XHuN4iJUKLI4Ybw" target="_blank" rel="noopener">Book a call
-        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <a class="textlink" href="https://ig.me/m/mypektas" target="_blank" rel="noopener">Or DM me on Instagram</a>
+    <h2 id="apply-title" data-reveal>Get your <span class="hl">free</span> plan</h2>
+    <p class="lead" data-reveal style="--i: 1">Seven quick questions, about a minute. Then you pick a call time on the next screen.</p>
+
+    <div class="quiz" id="quiz" data-reveal="scale" style="--i: 2">
+      <div class="quiz-top"><span id="q-step">Before we start</span><span id="q-count"></span></div>
+      <div class="qbar" aria-hidden="true"><span id="q-bar"></span></div>
+      <div class="stage" id="q-stage" aria-live="polite">
+        <div class="screen q-intro">
+          <h3 class="q-title" tabindex="-1">Let's see if we're a fit.</h3>
+          <p>These questions tell me where you're starting from, so the plan I bring to our call is built for your audience, not a template.</p>
+          <p>The more honest you are, the better the plan.</p>
+          <div class="q-nav"><span></span><button class="btn" type="button" data-start>Start
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button></div>
+        </div>
+      </div>
+      <noscript><p class="q-small">Turn on JavaScript to answer the questions.</p></noscript>
     </div>
-    <p class="byline" data-reveal style="--i: 3">Mustafa Pektas, founder. Based in Dubai, working with creators worldwide.</p>
+    <p class="byline" data-reveal style="--i: 3">Rather talk first? <a class="textlink" href="https://ig.me/m/mypektas" target="_blank" rel="noopener">DM me on Instagram</a></p>
+    <p class="byline byline--sub" data-reveal style="--i: 4">Mustafa Pektas, founder. Based in Dubai, working with creators worldwide.</p>
   </div>
 </section>
 
@@ -358,9 +429,15 @@ p { margin: 0; }
   </div>
 </footer>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B9A4FF"/><stop offset="1" stop-color="#7353F0"/></linearGradient></defs></svg>
+
 <script>
-// Booking buttons link to the Google Calendar booking page. Bookings sync to the Continuo Leads sheet every hour.
-// "DM me" links open an Instagram DM with @mypektas.
+/* ===== Settings ===== */
+// 1. Your Google Apps Script web app URL (see apps-script.gs).
+const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbx-LMPmhYS0KX6WqTUmMrvWBFPssUsAkVLFe0dk322zpvSX37vSJrZthwr7mHbf40Ey/exec";
+// 2. Your Google Calendar booking page. Priority and Good leads pick a call time straight after the questions.
+const BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ20cEOhr1XQAVwi_la-ba91DuW1Co_edyngqcU5fYPEqhekZm2JuK1WI91R5XHuN4iJUKLI4Ybw";
+
 (() => {
   const motionOK = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const finePointer = window.matchMedia("(pointer: fine)").matches;
@@ -498,6 +575,221 @@ p { margin: 0; }
       b.addEventListener("pointerleave", () => { b.style.setProperty("--bx", "0px"); b.style.setProperty("--by", "0px"); });
     });
   }
+
+  /* ===== Qualifier ===== */
+  const quiz = document.getElementById("quiz");
+  const stage = document.getElementById("q-stage");
+  const stepLabel = document.getElementById("q-step");
+  const countLabel = document.getElementById("q-count");
+  const barFill = document.getElementById("q-bar");
+  const arrow = '<svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+  const steps = [
+    { id: "platform", title: "Where is your main audience?", sub: "Pick the account you'd sell to.", options: [["Instagram"], ["TikTok"], ["YouTube"], ["Other"]] },
+    { id: "niche", title: "What's your niche?", sub: "Pick the closest one.", options: [["Fitness and health"], ["Business and money"], ["Personal growth"], ["Relationships"], ["Beauty and fashion"], ["Food and cooking"], ["Tech and AI"], ["Other"]] },
+    { id: "followers", title: "How many followers on that account?", sub: "A rough range is fine.", options: [["Under 10k"], ["10k to 50k"], ["50k to 100k"], ["100k to 300k"], ["Over 300k"]] },
+    { id: "asks", title: "Do people ask you how to do what you do?", sub: "In comments, DMs, replies.", wide: true, options: [["All the time", "Every week"], ["Sometimes", "A few times a month"], ["Rarely", "It doesn't really come up"]] },
+    { id: "income", title: "Where does most of your income come from today?", sub: "Your biggest source right now.", options: [["Brand deals"], ["Platform payouts"], ["Coaching or clients"], ["My own products"], ["Not monetised yet"]] },
+    { id: "live", title: "During a launch week, will you go live and show up?", sub: "Launches sell when you're in the room.", wide: true, options: [["Yes", "I can commit to that"], ["Probably", "Depends on the week"], ["No", "I'd rather not"]] },
+    { id: "details", title: "Last step: your details", sub: "So I can look at your account before we talk." }
+  ];
+  const points = {
+    followers: { "Under 10k": 0, "10k to 50k": 20, "50k to 100k": 28, "100k to 300k": 30, "Over 300k": 22 },
+    asks: { "All the time": 30, "Sometimes": 18, "Rarely": 5 },
+    income: { "Brand deals": 20, "Platform payouts": 18, "Not monetised yet": 15, "Coaching or clients": 12, "My own products": 8 },
+    live: { "Yes": 20, "Probably": 12, "No": 0 }
+  };
+  const answers = {};
+  let index = -1;
+  let busy = false;
+
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const source = (() => {
+    const q = new URLSearchParams(location.search).get("src");
+    if (q) return q.slice(0, 40);
+    try { return document.referrer ? new URL(document.referrer).hostname : "direct"; } catch (e) { return "direct"; }
+  })();
+
+  const setProgress = () => {
+    const total = steps.length;
+    if (index < 0) { stepLabel.textContent = "Before we start"; countLabel.textContent = ""; barFill.style.width = "0%"; return; }
+    if (index >= total) { stepLabel.textContent = "Done"; countLabel.textContent = ""; barFill.style.width = "100%"; return; }
+    stepLabel.textContent = "Question " + (index + 1) + " of " + total;
+    countLabel.textContent = Math.round((index / total) * 100) + "%";
+    barFill.style.width = ((index / total) * 100) + "%";
+  };
+
+  const swap = (html, back) => {
+    const old = stage.firstElementChild;
+    const show = () => {
+      stage.innerHTML = html;
+      quiz.classList.toggle("is-done", index >= steps.length);
+      setProgress();
+      const title = stage.querySelector(".q-title");
+      if (title) title.focus({ preventScroll: true });
+      wire();
+      busy = false;
+    };
+    busy = true;
+    if (old && motionOK) { old.classList.add(back ? "out-back" : "out"); setTimeout(show, 210); } else { show(); }
+  };
+
+  const choiceScreen = (s) => {
+    const letters = "ABCDEFGH";
+    const chosen = answers[s.id];
+    const opts = s.options.map((o, k) =>
+      '<button type="button" class="opt" data-value="' + esc(o[0]) + '" aria-pressed="' + (chosen === o[0]) + '" style="--k:' + k + '">' +
+      "<kbd>" + letters[k] + "</kbd><span>" + esc(o[0]) + (o[1] ? "<small>" + esc(o[1]) + "</small>" : "") + "</span></button>"
+    ).join("");
+    return '<div class="screen"><h3 class="q-title" tabindex="-1">' + esc(s.title) + '</h3><p class="q-sub">' + esc(s.sub) + "</p>" +
+      '<div class="opts' + (s.wide ? " opts--wide" : "") + '">' + opts + "</div>" +
+      '<div class="q-nav"><button type="button" class="q-back" data-back>Back</button><span class="q-hint">Press a letter key or tap</span></div></div>';
+  };
+
+  const detailsScreen = (s) => {
+    const v = (k) => esc(answers[k] || "");
+    const other = answers.niche === "Other";
+    return '<div class="screen"><h3 class="q-title" tabindex="-1">' + esc(s.title) + '</h3><p class="q-sub">' + esc(s.sub) + "</p>" +
+      '<form class="fields" id="q-form" novalidate>' +
+      '<div class="field"><label for="q-name">Your name</label><input id="q-name" name="name" autocomplete="name" required value="' + v("name") + '"></div>' +
+      '<div class="field"><label for="q-email">Email</label><input id="q-email" name="email" type="email" autocomplete="email" required value="' + v("email") + '"></div>' +
+      '<div class="field' + (other ? "" : " field--wide") + '"><label for="q-handle">Account handle</label><input id="q-handle" name="handle" placeholder="@yourhandle" autocapitalize="off" spellcheck="false" required value="' + v("handle") + '"></div>' +
+      (other ? '<div class="field"><label for="q-niche">Your niche</label><input id="q-niche" name="nicheOther" placeholder="e.g. parenting, travel, music" required value="' + v("nicheOther") + '"></div>' : "") +
+      '<div class="trap" aria-hidden="true"><label for="q-company">Company</label><input id="q-company" name="company" tabindex="-1" autocomplete="off"></div>' +
+      '</form><p class="q-error" id="q-error" role="alert"></p>' +
+      '<div class="q-nav"><button type="button" class="q-back" data-back>Back</button><button type="button" class="btn" data-submit>See if we\'re a fit' + arrow + "</button></div></div>";
+  };
+
+  const score = () => {
+    const s = (points.followers[answers.followers] || 0) + (points.asks[answers.asks] || 0) + (points.income[answers.income] || 0) + (points.live[answers.live] || 0);
+    let tier = "Good";
+    if (answers.followers === "Under 10k" || answers.live === "No" || s < 50) tier = "Low";
+    else if (s >= 75) tier = "Priority";
+    return { s, tier };
+  };
+
+  const resultScreen = (tier) => {
+    const name = esc((answers.name || "").split(" ")[0]);
+    const mark = '<svg class="result-mark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29"/><path d="M20 33l8 8 16-17"/></svg>';
+    const book = BOOKING_URL
+      ? '<p>Pick a 30 minute call below. I\'ll study your account first and bring your one page plan: product ideas, prices, and how the split works.</p>' +
+        '<a class="btn btn--book" href="' + esc(BOOKING_URL) + '" target="_blank" rel="noopener">Pick a call time' + arrow + "</a>" +
+        '<p class="q-small">Times show in your own time zone. Takes about 20 seconds.</p>'
+      : "<p>Your plan lands in your inbox within 48 hours, from Mustafa directly.</p>";
+    if (tier === "Priority") {
+      return '<div class="screen result">' + mark + '<span class="tier tier--priority">Strong fit</span><h3 class="q-title" tabindex="-1">' + name + ", you're exactly who we built this for.</h3>" + book + "</div>";
+    }
+    if (tier === "Good") {
+      return '<div class="screen result">' + mark + '<span class="tier tier--good">Looks like a fit</span><h3 class="q-title" tabindex="-1">Thanks, ' + name + ". Let's talk.</h3>" + book + "</div>";
+    }
+    return '<div class="screen result">' + mark + '<h3 class="q-title" tabindex="-1">Thanks, ' + name + ". Let's talk it through.</h3>" + book + "</div>";
+  };
+
+  const burst = () => {
+    if (!motionOK) return;
+    const c = document.createElement("canvas");
+    c.className = "burst";
+    quiz.appendChild(c);
+    const ctx = c.getContext("2d");
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const w = c.clientWidth, h = c.clientHeight;
+    c.width = w * dpr; c.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const colors = ["#E2D8FF", "#B9A4FF", "#9374FA", "#7353F0", "#F4EFFF"];
+    const parts = Array.from({ length: 90 }, () => {
+      const a = Math.random() * Math.PI * 2, v = Math.random() * 7 + 3;
+      return { x: 70, y: 110, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 3, r: Math.random() * 4 + 2, c: colors[Math.floor(Math.random() * colors.length)], rot: Math.random() * 6 };
+    });
+    const t0 = performance.now();
+    const frame = (t) => {
+      const life = (t - t0) / 1400;
+      ctx.clearRect(0, 0, w, h);
+      parts.forEach((p) => {
+        p.vy += 0.18; p.vx *= 0.985; p.x += p.vx; p.y += p.vy; p.rot += 0.1;
+        ctx.save(); ctx.globalAlpha = Math.max(0, 1 - life); ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+        ctx.fillStyle = p.c; ctx.fillRect(-p.r / 2, -p.r / 2, p.r, p.r * 1.6); ctx.restore();
+      });
+      if (life < 1) requestAnimationFrame(frame); else c.remove();
+    };
+    requestAnimationFrame(frame);
+  };
+
+  const submit = async () => {
+    const form = document.getElementById("q-form");
+    const err = document.getElementById("q-error");
+    const btn = stage.querySelector("[data-submit]");
+    let firstBad = null;
+    Array.from(form.elements).forEach((el) => {
+      if (!el.name || el.name === "company") return;
+      answers[el.name] = el.value.trim();
+      const ok = el.checkValidity() && el.value.trim() !== "";
+      el.setAttribute("aria-invalid", ok ? "false" : "true");
+      if (!ok && !firstBad) firstBad = el;
+    });
+    if (firstBad) { err.textContent = "Fill in every field so we know where to send your plan."; firstBad.focus(); return; }
+    if (!FORM_ENDPOINT.startsWith("https://script.google.com/")) { err.textContent = "This form isn't connected yet. Please try again later."; return; }
+    const { s, tier } = score();
+    const data = new URLSearchParams({
+      tier: tier, score: String(s), name: answers.name, email: answers.email, handle: answers.handle, niche: answers.niche === "Other" ? "Other: " + (answers.nicheOther || "") : (answers.niche || ""),
+      platform: answers.platform || "", followers: answers.followers || "", asks: answers.asks || "", income: answers.income || "", live: answers.live || "",
+      source: source, company: form.elements.company.value
+    });
+    btn.disabled = true;
+    btn.firstChild.textContent = "Sending ";
+    try {
+      await fetch(FORM_ENDPOINT, { method: "POST", mode: "no-cors", body: data });
+      index = steps.length;
+      swap(resultScreen(tier));
+      setTimeout(burst, 260);
+    } catch (e) {
+      btn.disabled = false;
+      btn.firstChild.textContent = "See if we're a fit";
+      err.textContent = "That didn't go through. Check your connection and try again.";
+    }
+  };
+
+  const go = (i, back) => {
+    index = i;
+    const s = steps[i];
+    swap(s.id === "details" ? detailsScreen(s) : choiceScreen(s), back);
+  };
+
+  const wire = () => {
+    const start = stage.querySelector("[data-start]");
+    if (start) start.addEventListener("click", () => go(0));
+    stage.querySelectorAll(".opt").forEach((b) => {
+      b.addEventListener("click", () => {
+        if (busy) return;
+        stage.querySelectorAll(".opt").forEach((o) => o.setAttribute("aria-pressed", "false"));
+        b.setAttribute("aria-pressed", "true");
+        answers[steps[index].id] = b.dataset.value;
+        busy = true;
+        setTimeout(() => go(index + 1), 260);
+      });
+    });
+    const backBtn = stage.querySelector("[data-back]");
+    if (backBtn) backBtn.addEventListener("click", () => { if (!busy) (index <= 0 ? (index = -1, swap(introHTML, true)) : go(index - 1, true)); });
+    const sub = stage.querySelector("[data-submit]");
+    if (sub) {
+      sub.addEventListener("click", submit);
+      document.getElementById("q-form").addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); submit(); } });
+    }
+  };
+
+  const introHTML = stage.innerHTML;
+  wire();
+  setProgress();
+
+  document.addEventListener("keydown", (e) => {
+    if (index < 0 || index >= steps.length || busy) return;
+    if (e.target.closest && e.target.closest("input, textarea")) return;
+    const k = e.key.toUpperCase();
+    const pos = "ABCDEFGH".indexOf(k);
+    if (pos < 0) return;
+    const r = quiz.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > window.innerHeight) return;
+    const opts = stage.querySelectorAll(".opt");
+    if (opts[pos]) opts[pos].click();
+  });
 })();
 </script>
 </body>
