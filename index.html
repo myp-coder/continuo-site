@@ -230,16 +230,12 @@ p { margin: 0; }
 .result-mark circle { stroke: url(#rg); stroke-width: 4; fill: none; stroke-dasharray: 190; stroke-dashoffset: 190; animation: dash 0.9s var(--ease-out) 0.1s forwards; }
 .result-mark path { stroke: var(--violet); stroke-width: 5; fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 50; stroke-dashoffset: 50; animation: dash 0.5s var(--ease-out) 0.7s forwards; }
 @keyframes dash { to { stroke-dashoffset: 0; } }
-.tier { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; letter-spacing: 0.01em; padding: 6px 12px; border-radius: 999px; margin-bottom: 14px; }
-.tier--priority { background: #E4DFFF; color: var(--violet); }
-.tier--good { background: #EEEBFF; color: #3F2AAE; }
-.tier--later { background: var(--fog); color: #475467; }
 .result p { color: #2B2840; font-size: 17px; margin-top: 10px; max-width: 34em; }
 .result .btn { margin-top: 24px; }
 .result .q-small { font-size: 13px; color: #5A5772; margin-top: 12px; }
 .burst { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; }
 .q-privacy { margin-top: 14px; }
-.q-privacy a { color: var(--violet); text-underline-offset: 3px; }
+.q-privacy a, #q-sent a { color: var(--violet); text-underline-offset: 3px; }
 
 .apply .byline { margin-top: 36px; font-size: 16px; color: var(--muted); }
 .apply .byline .textlink { margin-left: 6px; }
@@ -705,21 +701,24 @@ const BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules
     return { s, tier };
   };
 
-  const resultScreen = (tier) => {
+  // Everyone sees the same thank-you screen. The fit score only goes to the CRM.
+  const resultScreen = () => {
     const name = esc((answers.name || "").split(" ")[0]);
     const mark = '<svg class="result-mark" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29"/><path d="M20 33l8 8 16-17"/></svg>';
-    const book = BOOKING_URL
-      ? '<p>Pick a 30 minute call below. I\'ll study your account first and bring your one page plan: product ideas, prices, and how the split works.</p>' +
-        '<a class="btn btn--book" href="' + esc(BOOKING_URL) + '" target="_blank" rel="noopener">Pick a call time' + arrow + "</a>" +
-        '<p class="q-small">Times show in your own time zone. Takes about 20 seconds.</p>'
-      : "<p>Your plan lands in your inbox within 48 hours, from Mustafa directly.</p>";
-    if (tier === "Priority") {
-      return '<div class="screen result">' + mark + '<span class="tier tier--priority">Strong fit</span><h3 class="q-title" tabindex="-1">' + name + ", you're exactly who we built this for.</h3>" + book + "</div>";
-    }
-    if (tier === "Good") {
-      return '<div class="screen result">' + mark + '<span class="tier tier--good">Looks like a fit</span><h3 class="q-title" tabindex="-1">Thanks, ' + name + ". Let's talk.</h3>" + book + "</div>";
-    }
-    return '<div class="screen result">' + mark + '<h3 class="q-title" tabindex="-1">Thanks, ' + name + ". Let's talk it through.</h3>" + book + "</div>";
+    return '<div class="screen result">' + mark +
+      '<h3 class="q-title" tabindex="-1">Thanks, ' + name + '. Last step: pick your call time.</h3>' +
+      '<p>It\'s 30 minutes on Google Meet. I\'ll go through your account before we talk and bring your one page plan: what to sell, at what price, and how the split works.</p>' +
+      '<a class="btn btn--book" href="' + esc(BOOKING_URL) + '" target="_blank" rel="noopener">Pick a call time' + arrow + "</a>" +
+      '<p class="q-small" id="q-sent">Times show in your own time zone. Takes about 20 seconds.</p></div>';
+  };
+
+  // Sends the answers in the background, with two retries, so nobody waits on the last screen.
+  const send = (data, tries) => {
+    fetch(FORM_ENDPOINT, { method: "POST", mode: "no-cors", body: data }).catch(() => {
+      if (tries > 0) { setTimeout(() => send(data, tries - 1), 2500); return; }
+      const note = document.getElementById("q-sent");
+      if (note) note.innerHTML = 'Your answers didn\'t reach us. Please <a href="https://ig.me/m/mypektas" target="_blank" rel="noopener">DM me &ldquo;PLAN&rdquo; on Instagram</a> so I can still prepare your plan.';
+    });
   };
 
   const burst = () => {
@@ -753,7 +752,6 @@ const BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules
   const submit = async () => {
     const form = document.getElementById("q-form");
     const err = document.getElementById("q-error");
-    const btn = stage.querySelector("[data-submit]");
     let firstBad = null;
     Array.from(form.elements).forEach((el) => {
       if (!el.name || el.name === "company") return;
@@ -770,18 +768,10 @@ const BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules
       platform: answers.platform || "", followers: answers.followers || "", asks: answers.asks || "", income: answers.income || "", live: answers.live || "",
       source: source, company: form.elements.company.value
     });
-    btn.disabled = true;
-    btn.firstChild.textContent = "Sending ";
-    try {
-      await fetch(FORM_ENDPOINT, { method: "POST", mode: "no-cors", body: data });
-      index = steps.length;
-      swap(resultScreen(tier));
-      setTimeout(burst, 260);
-    } catch (e) {
-      btn.disabled = false;
-      btn.firstChild.textContent = "See if we're a fit";
-      err.textContent = "That didn't go through. Check your connection and try again.";
-    }
+    send(data, 2);
+    index = steps.length;
+    swap(resultScreen());
+    setTimeout(burst, 260);
   };
 
   const go = (i, back) => {
