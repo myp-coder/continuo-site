@@ -6,37 +6,40 @@
 <title>Privacy notice | Continuo</title>
 <meta name="description" content="How Continuo collects and uses your personal data.">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#04050A">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23E2D8FF'/%3E%3Cstop offset='1' stop-color='%237353F0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%2304050A'/%3E%3Crect x='10' y='38' width='44' height='5' rx='2.5' fill='url(%23g)'/%3E%3Ccircle cx='18' cy='40.5' r='6' fill='url(%23g)'/%3E%3Ccircle cx='46' cy='40.5' r='6' fill='url(%23g)'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#09061A">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <style>
-@font-face { font-family: "Archivo"; src: url("archivo.woff2") format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; }
-@font-face { font-family: "Manrope"; src: url("manrope.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
-:root { --void: #04050A; --line: rgba(255, 255, 255, 0.08); --text: #EEF1F8; --muted: #ABA6C4; --lavender: #B4A3FF; --grad: linear-gradient(120deg, #E2D8FF 0%, #B9A4FF 35%, #9374FA 70%, #7353F0 100%); color-scheme: dark; }
+@font-face { font-family: "Poppins"; src: url("poppins-light.woff2") format("woff2"); font-weight: 300; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url("poppins-medium.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("inter.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+:root { --void: #09061A; --violet: #4A2BD6; --circuit: #5B3DF5; --glow: #B6A8FF; --line: rgba(238, 240, 247, 0.09); --text: #EEF0F7; --muted: #A7A4C0; color-scheme: dark; }
 * { box-sizing: border-box; }
 html { background: var(--void); -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--void); color: var(--text); font-family: "Manrope", "Segoe UI", system-ui, sans-serif; font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
-a { color: var(--lavender); text-underline-offset: 3px; }
-:focus-visible { outline: 3px solid var(--lavender); outline-offset: 3px; border-radius: 4px; }
+body { margin: 0; background: var(--void); color: var(--text); font-family: "Inter", "Segoe UI", system-ui, sans-serif; font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: var(--glow); text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--glow); outline-offset: 3px; border-radius: 4px; }
 .top { border-bottom: 1px solid var(--line); }
 .wrap { max-width: 760px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
 .top .wrap { height: 68px; display: flex; align-items: center; }
-.wordmark { font-family: "Archivo", Arial, sans-serif; font-weight: 800; font-stretch: 125%; font-size: 20px; letter-spacing: 0.06em; text-decoration: none; text-transform: uppercase; display: inline-flex; align-items: center; gap: 12px; }
-.wordmark .word { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.wordmark .mark { width: 26px; height: 4px; border-radius: 2px; background: var(--grad); }
+.brand { display: inline-flex; align-items: center; gap: 16px; text-decoration: none; color: #FFFFFF; }
+.brand svg { height: 28px; width: auto; }
+.brand path { fill: none; stroke: #FFFFFF; stroke-width: 11; stroke-linecap: round; stroke-linejoin: round; }
+.wordmark { font-family: "Poppins", system-ui, sans-serif; font-weight: 300; font-size: 18px; letter-spacing: 0.42em; margin-right: -0.42em; }
 main { padding: 56px 0 88px; }
-h1, h2 { font-family: "Archivo", Arial, sans-serif; color: #FFFFFF; margin: 0; }
-h1 { font-size: clamp(34px, 5vw, 48px); font-weight: 800; font-stretch: 112%; line-height: 1.05; }
-h2 { font-size: 21px; font-weight: 800; font-stretch: 106%; margin-top: 40px; }
+h1, h2 { font-family: "Poppins", system-ui, sans-serif; color: #FFFFFF; margin: 0; font-weight: 500; letter-spacing: -0.02em; }
+h1 { font-size: clamp(34px, 5vw, 48px); line-height: 1.1; }
+h2 { font-size: 20px; margin-top: 40px; letter-spacing: -0.01em; }
 p, ul { margin: 14px 0 0; color: var(--muted); }
 ul { padding-left: 22px; }
 li + li { margin-top: 6px; }
-strong { color: var(--text); font-weight: 700; }
-.updated { margin-top: 12px; font-size: 15px; }
-.back { display: inline-block; margin-top: 48px; font-weight: 700; }
+strong { color: var(--text); font-weight: 600; }
+.updated { margin-top: 12px; font-size: 14px; }
+.back { display: inline-block; margin-top: 48px; font-weight: 600; }
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap"><a class="wordmark" href="./" aria-label="Continuo home"><span class="mark" aria-hidden="true"></span><span class="word">Continuo</span></a></div></header>
+<header class="top"><div class="wrap"><a class="brand" href="./" aria-label="Continuo home"><svg viewBox="-103.5 -103.5 180.1 207" aria-hidden="true" focusable="false"><path d="M70.71 -70.71 A100 100 0 1 0 70.71 70.71 A8 8 0 0 0 59.4 59.4 A84 84 0 1 1 59.4 -59.4 A8 8 0 0 1 48.08 -48.08 A68 68 0 1 0 48.08 48.08 A8 8 0 0 0 36.77 36.77 A52 52 0 1 1 36.77 -36.77 A8 8 0 0 1 25.46 -25.46 A36 36 0 1 0 25.46 25.46"/></svg><span class="wordmark">continuo</span></a></div></header>
 <main>
   <div class="wrap">
     <h1>Privacy notice</h1>
