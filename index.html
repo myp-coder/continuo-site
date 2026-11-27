@@ -3,22 +3,28 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Continuo | Products for creators, built and sold with you</title>
-<meta name="description" content="Continuo turns your audience into products you own and sells them with you. Nothing upfront. We only earn when you do.">
-<meta property="og:title" content="Continuo | You make the content. We build the business underneath it.">
-<meta property="og:description" content="Products you own, built and sold with you on a revenue split. Nothing to pay upfront.">
+<title>Continuo | Products for fitness, health and wellness creators</title>
+<meta name="description" content="Continuo builds and sells programs, coaching and communities for fitness, health and wellness creators in the GCC and Europe. Nothing upfront. We only earn when you do.">
+<meta property="og:title" content="Continuo | Your followers want your plan. Let's sell it to them.">
+<meta property="og:description" content="Programs, coaching and communities for fitness, health and wellness creators. Built and sold with you on a revenue split. Nothing upfront.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.continuopartners.com/">
+<meta property="og:image" content="https://www.continuopartners.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#04050A">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23E2D8FF'/%3E%3Cstop offset='1' stop-color='%237353F0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%2304050A'/%3E%3Crect x='10' y='38' width='44' height='5' rx='2.5' fill='url(%23g)'/%3E%3Ccircle cx='18' cy='40.5' r='6' fill='url(%23g)'/%3E%3Ccircle cx='46' cy='40.5' r='6' fill='url(%23g)'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
+<link rel="preload" href="archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="manrope.woff2" as="font" type="font/woff2" crossorigin>
 <script>
   document.documentElement.classList.add("js");
   setTimeout(function () { if (!window.__continuoReady) document.documentElement.classList.add("reveal-all"); }, 2500);
 </script>
 <style>
+/* Fonts are served from this site, so no visitor data goes to a font service. */
+@font-face { font-family: "Archivo"; src: url("archivo.woff2") format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; }
+@font-face { font-family: "Manrope"; src: url("manrope.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
 :root {
   --void: #04050A;
   --deep: #0A0816;
@@ -54,7 +60,7 @@ button { font: inherit; }
 @keyframes drift { from { translate: 0 0; } to { translate: 60px 40px; } }
 
 h1, h2 { font-family: var(--font-display); margin: 0; text-wrap: balance; color: #FFFFFF; }
-h1 { font-size: clamp(44px, 7.2vw, 96px); font-weight: 800; font-stretch: 116%; line-height: 0.98; letter-spacing: -0.02em; max-width: 15ch; }
+h1 { font-size: clamp(42px, 6.4vw, 86px); font-weight: 800; font-stretch: 116%; line-height: 0.98; letter-spacing: -0.02em; max-width: 15ch; }
 h1 .hl, h2 .hl { color: var(--accent); }
 h2 { font-size: clamp(32px, 4.6vw, 58px); font-weight: 800; font-stretch: 112%; line-height: 1.04; letter-spacing: -0.015em; max-width: 19ch; }
 p { margin: 0; }
@@ -249,6 +255,10 @@ p { margin: 0; }
 .footer-tag { margin-top: 14px; max-width: 40em; text-wrap: pretty; }
 .footer-meta { text-align: right; }
 .footer-meta p + p { margin-top: 4px; }
+.footer-meta a { color: var(--muted); text-underline-offset: 3px; }
+.footer-meta a:hover { color: var(--text); }
+.q-privacy { margin-top: 14px; }
+.q-privacy a { color: #5B4BB0; text-underline-offset: 3px; }
 
 /* Responsive */
 @media (max-width: 860px) {
@@ -313,8 +323,8 @@ p { margin: 0; }
   </div>
   <div class="wrap">
     <div class="hero-copy">
-      <h1 id="hero-title">You make the content. We build <span class="hl">the business</span> underneath it.</h1>
-      <p class="lead rise" style="--d: 0.65s">We turn your audience into products you own, then build and sell them with you. Nothing upfront. We only earn when you do.</p>
+      <h1 id="hero-title">Your followers want your plan. Let's <span class="hl">sell it</span> to them.</h1>
+      <p class="lead rise" style="--d: 0.65s">Continuo builds and sells programs, coaching and communities for fitness, health and wellness creators in the GCC and Europe. Nothing upfront. We only earn when you do.</p>
       <div class="actions rise" style="--d: 0.8s">
         <a class="btn btn--mag" href="#apply">Get your free plan
           <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -351,7 +361,7 @@ p { margin: 0; }
 <section class="band band--deep glow-left" aria-labelledby="facts-title">
   <div class="wrap">
     <h2 id="facts-title" data-reveal>Brands decide what most creators earn.</h2>
-    <!-- Sources. 81% and 2%: #paid Creator Signals 2026, via Net Influencer, https://www.netinfluencer.com/survey-81-percent-of-creators-rely-on-brand-deals-as-primary-income-amid-life-milestones/ . $10B+: Tubefilter 2025, https://www.tubefilter.com/2025/08/07/patreon-kajabi-10-billion-creator-economy-payouts-funding-since-launch/ -->
+    <!-- Sources. 81% and 2%: #paid Creator Signals 2026, via Net Influencer, https://www.netinfluencer.com/survey-81-percent-of-creators-rely-on-brand-deals-as-primary-income-amid-life-milestones/ . 13% and $1.7B: InsightRaider digital product market size 2026 (152K products analysed), https://insightraider.com/es/blog/digital-product-market-size -->
     <dl class="stats" data-stagger>
       <div class="stat">
         <dt data-count="81" data-suffix="%">81%</dt>
@@ -362,8 +372,8 @@ p { margin: 0; }
         <dd>say it's their own digital products.</dd>
       </div>
       <div class="stat">
-        <dt data-count="10" data-prefix="$" data-suffix="B+">$10B+</dt>
-        <dd>earned by creators selling their own courses and programs on Kajabi alone.</dd>
+        <dt data-count="13" data-suffix="%">13%</dt>
+        <dd>of all online course revenue comes from health, fitness and wellness. That's $1.7B.</dd>
       </div>
     </dl>
   </div>
@@ -410,7 +420,7 @@ p { margin: 0; }
       <noscript><p class="q-small">Turn on JavaScript to answer the questions.</p></noscript>
     </div>
     <p class="byline" data-reveal style="--i: 3">Rather talk first? <a class="textlink" href="https://ig.me/m/mypektas" target="_blank" rel="noopener">DM me on Instagram</a></p>
-    <p class="byline byline--sub" data-reveal style="--i: 4">Mustafa Pektas, founder. Based in Dubai, working with creators worldwide.</p>
+    <p class="byline byline--sub" data-reveal style="--i: 4">Mustafa Pektas, founder. Based in Dubai, working with creators across the GCC and Europe.</p>
   </div>
 </section>
 
@@ -420,11 +430,12 @@ p { margin: 0; }
   <div class="wrap footer-row">
     <div>
       <a class="wordmark" href="#top"><span class="mark" aria-hidden="true"></span><span class="word">Continuo</span></a>
-      <p class="footer-tag">Products for creators, built and sold with you on a revenue split.</p>
+      <p class="footer-tag">Programs, coaching and communities for fitness, health and wellness creators, built and sold with you on a revenue split.</p>
     </div>
     <div class="footer-meta">
       <p>Dubai, United Arab Emirates</p>
       <p>&copy; 2026 Continuo</p>
+      <p><a href="privacy.html">Privacy notice</a></p>
     </div>
   </div>
 </footer>
@@ -586,7 +597,7 @@ const BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules
 
   const steps = [
     { id: "platform", title: "Where is your main audience?", sub: "Pick the account you'd sell to.", options: [["Instagram"], ["TikTok"], ["YouTube"], ["Other"]] },
-    { id: "niche", title: "What's your niche?", sub: "Pick the closest one.", options: [["Fitness and health"], ["Business and money"], ["Personal growth"], ["Relationships"], ["Beauty and fashion"], ["Food and cooking"], ["Tech and AI"], ["Other"]] },
+    { id: "niche", title: "What's your niche?", sub: "Pick the closest one.", options: [["Strength and bodybuilding"], ["Weight loss and nutrition"], ["Women's training"], ["Running and endurance"], ["Combat sports"], ["Yoga, pilates and mobility"], ["Mental health and wellbeing"], ["Other"]] },
     { id: "followers", title: "How many followers on that account?", sub: "A rough range is fine.", options: [["Under 10k"], ["10k to 50k"], ["50k to 100k"], ["100k to 300k"], ["Over 300k"]] },
     { id: "asks", title: "Do people ask you how to do what you do?", sub: "In comments, DMs, replies.", wide: true, options: [["All the time", "Every week"], ["Sometimes", "A few times a month"], ["Rarely", "It doesn't really come up"]] },
     { id: "income", title: "Where does most of your income come from today?", sub: "Your biggest source right now.", options: [["Brand deals"], ["Platform payouts"], ["Coaching or clients"], ["My own products"], ["Not monetised yet"]] },
@@ -654,9 +665,10 @@ const BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules
       '<div class="field"><label for="q-name">Your name</label><input id="q-name" name="name" autocomplete="name" required value="' + v("name") + '"></div>' +
       '<div class="field"><label for="q-email">Email</label><input id="q-email" name="email" type="email" autocomplete="email" required value="' + v("email") + '"></div>' +
       '<div class="field' + (other ? "" : " field--wide") + '"><label for="q-handle">Account handle</label><input id="q-handle" name="handle" placeholder="@yourhandle" autocapitalize="off" spellcheck="false" required value="' + v("handle") + '"></div>' +
-      (other ? '<div class="field"><label for="q-niche">Your niche</label><input id="q-niche" name="nicheOther" placeholder="e.g. parenting, travel, music" required value="' + v("nicheOther") + '"></div>' : "") +
+      (other ? '<div class="field"><label for="q-niche">Your niche</label><input id="q-niche" name="nicheOther" placeholder="e.g. sleep, skincare, physio" required value="' + v("nicheOther") + '"></div>' : "") +
       '<div class="trap" aria-hidden="true"><label for="q-company">Company</label><input id="q-company" name="company" tabindex="-1" autocomplete="off"></div>' +
       '</form><p class="q-error" id="q-error" role="alert"></p>' +
+      '<p class="q-small q-privacy">I only use these details to prepare your plan and contact you about it. <a href="privacy.html" target="_blank" rel="noopener">Privacy notice</a></p>' +
       '<div class="q-nav"><button type="button" class="q-back" data-back>Back</button><button type="button" class="btn" data-submit>See if we\'re a fit' + arrow + "</button></div></div>";
   };
 
