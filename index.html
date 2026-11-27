@@ -170,11 +170,7 @@ p { margin: 0; }
 .founder-grid { display: grid; grid-template-columns: 1fr minmax(260px, 440px); gap: clamp(40px, 6vw, 88px); align-items: center; }
 .founder-text { margin-top: 18px; color: var(--muted); max-width: 34em; text-wrap: pretty; }
 .founder-line { margin-top: 26px; padding-left: 18px; border-left: 2px solid var(--violet); font-family: var(--font-head); font-weight: 500; font-size: clamp(19px, 1.8vw, 22px); line-height: 1.4; color: #FFFFFF; max-width: 28em; text-wrap: balance; }
-.sign { margin-top: 32px; display: grid; gap: 2px; }
-.sign strong { font-family: var(--font-head); font-weight: 500; font-size: 20px; color: #FFFFFF; }
-.sign span { font-size: 14px; color: var(--muted); }
-.founder-photo { margin: 0; border-radius: 20px; overflow: hidden; aspect-ratio: 1; background: #1E2126; border: 1px solid var(--line); }
-.founder-photo img { width: 100%; height: 100%; object-fit: cover; }
+.founder-photo .person-photo { background: #1E2126; }
 
 /* Deal */
 .terms { margin: 44px 0 0; border-top: 1px solid var(--line); }
@@ -375,15 +371,15 @@ p { margin: 0; }
     <h2 id="money-title" data-reveal>Creators are earning billions from what they know.</h2>
     <p class="lead" data-reveal style="--i: 1">Yet only 2% of creators earn mainly from their own products. 81% still live on brand deals.</p>
     <!-- Sources.
-      $10B+ earned by creators on Kajabi: Kajabi, reported by Net Influencer, 7 Aug 2025, https://www.netinfluencer.com/kajabi-platform-reports-10b-in-creator-revenue-as-business-models-shift/
+      $480B creator economy by 2027: Goldman Sachs Research, Apr 2023, https://www.goldmansachs.com/insights/articles/the-creator-economy-could-approach-half-a-trillion-dollars-by-2027
       $4B a year through Whop: company figure reported by Fortune, 14 Jun 2026, https://fortune.com/2026/06/14/gen-z-founder-steven-schwartz-whop-platform-minted-650-millionaires-wants-work-be-fun-money-worries-obsolete/
       650+ millionaires: Whop's own count, same Fortune article.
       81% and 2%: #paid Creator Signals 2026, via Net Influencer, https://www.netinfluencer.com/survey-81-percent-of-creators-rely-on-brand-deals-as-primary-income-amid-life-milestones/
     -->
     <dl class="stats" data-stagger>
       <div class="stat">
-        <dt data-count="10" data-prefix="$" data-suffix="B+">$10B+</dt>
-        <dd>earned by creators selling their own courses, coaching and communities on Kajabi alone.</dd>
+        <dt data-count="480" data-prefix="$" data-suffix="B">$480B</dt>
+        <dd>is what the creator economy could be worth by 2027, according to Goldman Sachs.</dd>
       </div>
       <div class="stat">
         <dt data-count="4" data-decimals="1" data-prefix="$" data-suffix="B">$4B</dt>
@@ -405,10 +401,13 @@ p { margin: 0; }
       <p class="founder-text" data-reveal style="--i: 2">Your followers trust you. They ask how you do it, save your posts and copy what you do. That trust is worth a lot, but most of it gets rented out to brands one post at a time, and the income stops the day the deals do. The person who built the audience should earn the most from it.</p>
       <p class="founder-text" data-reveal style="--i: 3">So Continuo is built as a partnership. We turn what you already teach into a program, coaching or community your followers can buy, and we build the systems that keep selling it: the offer, the checkout, the launch and the sales calls. Nothing upfront. We earn a share only when you do, so we only win if you win.</p>
       <p class="founder-line" data-reveal style="--i: 4">Brand deals should be a bonus, not something you wait for every month.</p>
-      <p class="sign" data-reveal style="--i: 5"><strong>Mustafa Pektas</strong><span>Founder, Continuo</span></p>
     </div>
-    <figure class="founder-photo" data-reveal="scale">
-      <img src="mustafa-pektas.jpg?v=2" alt="Mustafa Pektas, founder of Continuo" width="900" height="900" loading="lazy" decoding="async">
+    <figure class="person founder-photo" data-reveal="scale">
+      <div class="person-photo"><img src="mustafa-pektas.jpg?v=2" alt="Mustafa Pektaş, founder of Continuo" width="900" height="900" loading="lazy" decoding="async"></div>
+      <figcaption>
+        <img class="m-logo" src="apple-touch-icon.png" alt="Continuo logo" width="48" height="48" loading="lazy" decoding="async">
+        <span><strong>Mustafa Pektaş</strong><span>Founder of Continuo.</span></span>
+      </figcaption>
     </figure>
   </div>
 </section>
