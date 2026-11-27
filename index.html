@@ -164,7 +164,19 @@ p { margin: 0; }
 .mini div { border-left: 2px solid var(--violet); padding-left: 16px; }
 .mini dt { font-family: var(--font-head); font-weight: 500; font-size: clamp(32px, 3.4vw, 44px); line-height: 1.05; letter-spacing: -0.03em; color: #FFFFFF; font-variant-numeric: tabular-nums; }
 .mini dd { margin: 6px 0 0; font-size: 14px; color: var(--muted); max-width: 14em; }
-.indep { margin-top: 32px; font-size: 14px; color: var(--muted); }
+
+/* Founder */
+.founder { background: linear-gradient(180deg, var(--void) 0%, #0D0824 100%); }
+.founder-grid { display: grid; grid-template-columns: 1fr minmax(260px, 440px); gap: clamp(40px, 6vw, 88px); align-items: center; }
+.founder-text { margin-top: 18px; color: var(--muted); max-width: 34em; text-wrap: pretty; }
+.promises { list-style: none; margin: 32px 0 0; padding: 0; display: grid; gap: 14px; max-width: 34em; }
+.promises li { position: relative; padding-left: 30px; color: #FFFFFF; font-weight: 500; }
+.promises li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 16px; height: 2px; border-radius: 2px; background: var(--grad); }
+.sign { margin-top: 36px; display: grid; gap: 2px; }
+.sign strong { font-family: var(--font-head); font-weight: 500; font-size: 20px; color: #FFFFFF; }
+.sign span { font-size: 14px; color: var(--muted); }
+.founder-photo { margin: 0; border-radius: 20px; overflow: hidden; aspect-ratio: 1; background: var(--violet); }
+.founder-photo img { width: 100%; height: 100%; object-fit: cover; }
 
 /* Deal */
 .terms { margin: 44px 0 0; border-top: 1px solid var(--line); }
@@ -233,7 +245,6 @@ p { margin: 0; }
 
 .apply .byline { margin-top: 36px; font-size: 16px; color: var(--muted); }
 .apply .byline .textlink { margin-left: 6px; }
-.apply .byline--sub { margin-top: 16px; font-size: 14px; }
 
 /* Footer */
 .footer { background: var(--void); color: var(--muted); padding: 0 0 52px; font-size: 14px; position: relative; overflow: hidden; }
@@ -250,7 +261,8 @@ p { margin: 0; }
 
 /* Responsive */
 @media (max-width: 960px) {
-  .proof-grid { grid-template-columns: 1fr; }
+  .proof-grid, .founder-grid { grid-template-columns: 1fr; }
+  .founder-photo { max-width: 360px; order: -1; }
   .person { max-width: 420px; }
 }
 @media (max-width: 860px) {
@@ -399,19 +411,18 @@ p { margin: 0; }
     </figure>
     <div class="proof-copy">
       <h2 id="proof-title" data-reveal>We build with the best in the game.</h2>
-      <p class="lead" data-reveal style="--i: 1">Continuo works with consultants from Iman Gadzhi's Monetise team to get you the best results. Their playbook, built around your audience.</p>
+      <p class="lead" data-reveal style="--i: 1">Continuo works with consultants from Iman Gadzhi's Monetise team. Few people know digital products like they do, and their playbook goes into everything we build for you.</p>
       <!-- Sources.
-        6.2M YouTube subscribers: vidIQ, 31 Oct 2026 (6,280,000), https://vidiq.com/youtube-stats/channel/@imangadzhi/
-        Co-owner of Whop since April 2025: Grit Daily, https://gritdaily.com/iman-gadzhi-joins-whop-as-co-owner/
+        $100M+: "portfolio of companies has generated well over nine figures in revenue", Iman Gadzhi press release, FinanceWire, 24 Aug 2026, https://www.webdisclosure.com/press-release/iman-gadzhi-acquires-stake-in-45-million-ai-powered-cold-email-platform-listkit-fpPIMf5aYaL
+        $10M: "how Iman Gadzhi used Whop to build his $10M digital product, Monetise", Whop blog, Oct 2025, https://whop.com/blog/iman-gadzhi-case-study/
         $5.1B valuation, Series D led by Sequoia and Shopify Ventures, 21 Oct 2026: https://www.pymnts.com/newswire-announcements/whop-announces-funding-round-at-5-1b-valuation-led-by-sequoia-and-shopify-ventures/
-        6,000+ community members: Whop blog, Oct 2025, https://whop.com/blog/iman-gadzhi-case-study/
+        Co-owner of Whop since April 2025: Grit Daily, https://gritdaily.com/iman-gadzhi-joins-whop-as-co-owner/
       -->
       <dl class="mini" data-stagger>
-        <div><dt data-count="6.2" data-decimals="1" data-suffix="M">6.2M</dt><dd>YouTube subscribers</dd></div>
-        <div><dt data-count="5.1" data-decimals="1" data-prefix="$" data-suffix="B">$5.1B</dt><dd>Whop's valuation in October 2026</dd></div>
-        <div><dt data-count="6000" data-suffix="+">6,000+</dt><dd>members in the Monetise community</dd></div>
+        <div><dt data-count="100" data-prefix="$" data-suffix="M+">$100M+</dt><dd>in revenue across the companies Iman has built</dd></div>
+        <div><dt data-count="10" data-prefix="$" data-suffix="M">$10M</dt><dd>from Monetise alone, according to Whop</dd></div>
+        <div><dt data-count="5.1" data-decimals="1" data-prefix="$" data-suffix="B">$5.1B</dt><dd>Whop's valuation. Iman is a co-owner.</dd></div>
       </dl>
-      <p class="indep" data-reveal>Continuo is independent. Your agreement is with us.</p>
     </div>
   </div>
 </section>
@@ -426,6 +437,24 @@ p { margin: 0; }
       <div><dt>Your brand</dt><dd>Stays yours. We never post on your accounts.</dd></div>
       <div><dt>If it doesn't sell</dt><dd>We earn nothing.</dd></div>
     </dl>
+  </div>
+</section>
+
+<section class="band founder" aria-labelledby="founder-title">
+  <div class="wrap founder-grid">
+    <div class="founder-copy">
+      <h2 id="founder-title" data-reveal>You work with me directly.</h2>
+      <p class="lead" data-reveal style="--i: 1">I'm Mustafa, the founder of Continuo. I'm Turkish, grew up in Saudi Arabia and I'm based in Dubai.</p>
+      <p class="founder-text" data-reveal style="--i: 2">Before Continuo, I recruited and onboarded partner companies for Odoo, running every step from the first message to the signed deal and the launch. Now I do the same for creators. I build the systems and close the sales, so you can keep creating.</p>
+      <ul class="promises" data-stagger>
+        <li>I study your account before we ever talk.</li>
+        <li>From the first call to launch day, you deal with me. No account managers.</li>
+      </ul>
+      <p class="sign" data-reveal><strong>Mustafa Pektas</strong><span>Founder, Continuo</span></p>
+    </div>
+    <figure class="founder-photo" data-reveal="scale">
+      <img src="mustafa-pektas.jpg" alt="Mustafa Pektas, founder of Continuo" width="900" height="900" loading="lazy" decoding="async">
+    </figure>
   </div>
 </section>
 
@@ -450,7 +479,6 @@ p { margin: 0; }
       <noscript><p class="q-small">Turn on JavaScript to answer the questions.</p></noscript>
     </div>
     <p class="byline" data-reveal style="--i: 3">Rather talk first? <a class="textlink" href="https://ig.me/m/mypektas" target="_blank" rel="noopener">DM me on Instagram</a></p>
-    <p class="byline byline--sub" data-reveal style="--i: 4">Mustafa Pektas, founder. Based in Dubai, working with creators across the GCC and Europe.</p>
   </div>
 </section>
 
@@ -598,7 +626,7 @@ const BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules
 
   const steps = [
     { id: "platform", title: "Where is your main audience?", sub: "Pick the account you'd sell to.", options: [["Instagram"], ["TikTok"], ["YouTube"], ["Other"]] },
-    { id: "niche", title: "What's your niche?", sub: "Pick the closest one.", options: [["Strength and bodybuilding"], ["Weight loss and nutrition"], ["Women's training"], ["Running and endurance"], ["Combat sports"], ["Yoga, pilates and mobility"], ["Mental health and wellbeing"], ["Other"]] },
+    { id: "niche", title: "What's your niche?", sub: "Pick the closest one.", options: [["Fitness and health"], ["Business and money"], ["Personal growth"], ["Relationships"], ["Beauty and fashion"], ["Food and cooking"], ["Tech and AI"], ["Other"]] },
     { id: "followers", title: "How many followers on that account?", sub: "A rough range is fine.", options: [["Under 10k"], ["10k to 50k"], ["50k to 100k"], ["100k to 300k"], ["Over 300k"]] },
     { id: "asks", title: "Do people ask you how to do what you do?", sub: "In comments, DMs, replies.", wide: true, options: [["All the time", "Every week"], ["Sometimes", "A few times a month"], ["Rarely", "It doesn't really come up"]] },
     { id: "income", title: "Where does most of your income come from today?", sub: "Your biggest source right now.", options: [["Brand deals"], ["Platform payouts"], ["Coaching or clients"], ["My own products"], ["Not monetised yet"]] },
@@ -666,7 +694,7 @@ const BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules
       '<div class="field"><label for="q-name">Your name</label><input id="q-name" name="name" autocomplete="name" required value="' + v("name") + '"></div>' +
       '<div class="field"><label for="q-email">Email</label><input id="q-email" name="email" type="email" autocomplete="email" required value="' + v("email") + '"></div>' +
       '<div class="field' + (other ? "" : " field--wide") + '"><label for="q-handle">Account handle</label><input id="q-handle" name="handle" placeholder="@yourhandle" autocapitalize="off" spellcheck="false" required value="' + v("handle") + '"></div>' +
-      (other ? '<div class="field"><label for="q-niche">Your niche</label><input id="q-niche" name="nicheOther" placeholder="e.g. sleep, skincare, physio" required value="' + v("nicheOther") + '"></div>' : "") +
+      (other ? '<div class="field"><label for="q-niche">Your niche</label><input id="q-niche" name="nicheOther" placeholder="e.g. parenting, travel, music" required value="' + v("nicheOther") + '"></div>' : "") +
       '<div class="trap" aria-hidden="true"><label for="q-company">Company</label><input id="q-company" name="company" tabindex="-1" autocomplete="off"></div>' +
       '</form><p class="q-error" id="q-error" role="alert"></p>' +
       '<p class="q-small q-privacy">I only use these details to prepare your plan and contact you about it. <a href="privacy.html" target="_blank" rel="noopener">Privacy notice</a></p>' +
