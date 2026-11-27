@@ -140,8 +140,13 @@ p { margin: 0; }
 .js [data-reveal="scale"] { transform: scale(0.96); }
 .js [data-reveal].in, .reveal-all [data-reveal] { opacity: 1; transform: none; }
 
-/* Money */
+/* Problem, then the market */
+.problem { background: var(--void); }
+.problem .stat dt { background: none; color: #D9D6EA; }
+.problem .stat::after { display: none; }
 .money { background: linear-gradient(180deg, var(--void) 0%, #0D0824 100%); }
+.money-cta { margin-top: 56px; display: flex; align-items: center; gap: 18px 28px; flex-wrap: wrap; }
+.money-cta p { margin: 0; font-size: 15px; color: var(--muted); max-width: 26em; }
 .stats { margin: 56px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
 .stat { position: relative; padding-top: 26px; }
 .stat::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line-2); }
@@ -337,7 +342,7 @@ p { margin: 0; }
         <a class="btn btn--mag" href="#apply">Get our free plan
           <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a class="textlink" href="https://ig.me/m/mypektas" target="_blank" rel="noopener">Or DM me &ldquo;PLAN&rdquo; on Instagram</a>
+        <a class="textlink" href="https://ig.me/m/mypektas" target="_blank" rel="noopener">Or DM us &ldquo;PLAN&rdquo; on Instagram</a>
       </div>
       <p class="note rise" style="--d: 0.95s">Answer seven quick questions, pick a call time, and get a one page plan for your account: what to sell, at what price, and how the split works.</p>
     </div>
@@ -366,15 +371,39 @@ p { margin: 0; }
   </div>
 </section>
 
+<section class="band problem" aria-labelledby="problem-title">
+  <div class="wrap">
+    <h2 id="problem-title" data-reveal>Most creators live deal to deal.</h2>
+    <p class="lead" data-reveal style="--i: 1">When the deals slow down, so does the income. You built the audience, but brands decide what it's worth and when you get paid.</p>
+    <!-- Sources.
+      46%, 50%+: CreatorIQ and influencers.club, State of Creators, 5,095 creators, reported by Tubefilter, 16 Aug 2026, https://www.tubefilter.com/2026/08/16/creators-rely-on-brand-deals-but-worry-about-the-tension-between-sponsors-and-viewers-and-just-15-say-they-fully-trust-sponsored-content-from-other-creators/
+      62%: CreatorIQ, State of Creator Compensation, 21 Jan 2026, "The top 10% of creators earned 62% of total payments in 2025, up from 53% in 2023", https://creatoriq.com/press/releases/state-of-creator-compensation-
+    -->
+    <dl class="stats" data-stagger>
+      <div class="stat">
+        <dt data-count="46" data-suffix="%">46%</dt>
+        <dd>of creators rely on brand deals for most of their income.</dd>
+      </div>
+      <div class="stat">
+        <dt data-count="50" data-suffix="%+">50%+</dt>
+        <dd>saw their brand deal earnings stay flat or barely grow from 2025 to 2026.</dd>
+      </div>
+      <div class="stat">
+        <dt data-count="62" data-suffix="%">62%</dt>
+        <dd>of all creator payments in 2025 went to the top 10% of creators.</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
 <section class="band money" aria-labelledby="money-title">
   <div class="wrap">
-    <h2 id="money-title" data-reveal>Creators are earning billions from what they know.</h2>
-    <p class="lead" data-reveal style="--i: 1">Yet only 2% of creators earn mainly from their own products. 81% still live on brand deals.</p>
+    <h2 id="money-title" data-reveal>There's a bigger pie, and you can own a slice of it.</h2>
+    <p class="lead" data-reveal style="--i: 1">Your own program, coaching or community earns on every sale, whether a brand calls this month or not. That's the slice we build with you.</p>
     <!-- Sources.
-      $480B creator economy by 2027: Goldman Sachs Research, Apr 2023, https://www.goldmansachs.com/insights/articles/the-creator-economy-could-approach-half-a-trillion-dollars-by-2027
+      $480B creator economy by 2027: Goldman Sachs Research, 19 Apr 2023, https://www.goldmansachs.com/insights/articles/the-creator-economy-could-approach-half-a-trillion-dollars-by-2027
       $4B a year through Whop: company figure reported by Fortune, 14 Jun 2026, https://fortune.com/2026/06/14/gen-z-founder-steven-schwartz-whop-platform-minted-650-millionaires-wants-work-be-fun-money-worries-obsolete/
       650+ millionaires: Whop's own count, same Fortune article.
-      81% and 2%: #paid Creator Signals 2026, via Net Influencer, https://www.netinfluencer.com/survey-81-percent-of-creators-rely-on-brand-deals-as-primary-income-amid-life-milestones/
     -->
     <dl class="stats" data-stagger>
       <div class="stat">
@@ -390,6 +419,12 @@ p { margin: 0; }
         <dd>Whop sellers have become millionaires, by Whop's own count.</dd>
       </div>
     </dl>
+    <div class="money-cta" data-reveal style="--i: 2">
+      <a class="btn btn--mag" href="#apply">Get our free plan
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <p>See what your slice could look like, with a one page plan for your account.</p>
+    </div>
   </div>
 </section>
 
@@ -397,7 +432,7 @@ p { margin: 0; }
   <div class="wrap founder-grid">
     <div class="founder-copy">
       <h2 id="founder-title" data-reveal>Why Continuo exists.</h2>
-      <p class="lead" data-reveal style="--i: 1">Creators do the hardest part of the work and keep the smallest part of the money. I want to change that.</p>
+      <p class="lead" data-reveal style="--i: 1">Creators do the hardest part of the work and keep the smallest part of the money. We're here to change that.</p>
       <p class="founder-text" data-reveal style="--i: 2">Your followers trust you. They ask how you do it, save your posts and copy what you do. That trust is worth a lot, but most of it gets rented out to brands one post at a time, and the income stops the day the deals do. The person who built the audience should earn the most from it.</p>
       <p class="founder-text" data-reveal style="--i: 3">So Continuo is built as a partnership. We turn what you already teach into a program, coaching or community your followers can buy, and we build the systems that keep selling it: the offer, the checkout, the launch and the sales calls. Nothing upfront. We earn a share only when you do, so we only win if you win.</p>
       <p class="founder-line" data-reveal style="--i: 4">Brand deals should be a bonus, not something you wait for every month.</p>
@@ -463,7 +498,7 @@ p { margin: 0; }
       <div class="stage" id="q-stage" aria-live="polite">
         <div class="screen q-intro">
           <h3 class="q-title" tabindex="-1">Let's see if we're a fit.</h3>
-          <p>These questions tell me where you're starting from, so the plan I bring to our call is built for your audience, not a template.</p>
+          <p>These questions tell us where you're starting from, so the plan we bring to your call is built for your audience, not a template.</p>
           <p>The more honest you are, the better the plan.</p>
           <div class="q-nav"><span></span><button class="btn" type="button" data-start>Start
             <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -472,7 +507,7 @@ p { margin: 0; }
       </div>
       <noscript><p class="q-small">Turn on JavaScript to answer the questions.</p></noscript>
     </div>
-    <p class="byline" data-reveal style="--i: 3">Rather talk first? <a class="textlink" href="https://ig.me/m/mypektas" target="_blank" rel="noopener">DM me &ldquo;PLAN&rdquo; on Instagram</a></p>
+    <p class="byline" data-reveal style="--i: 3">Rather talk first? <a class="textlink" href="https://ig.me/m/mypektas" target="_blank" rel="noopener">DM us &ldquo;PLAN&rdquo; on Instagram</a></p>
   </div>
 </section>
 
@@ -625,7 +660,7 @@ const BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules
     { id: "asks", title: "Do people ask you how to do what you do?", sub: "In comments, DMs, replies.", wide: true, options: [["All the time", "Every week"], ["Sometimes", "A few times a month"], ["Rarely", "It doesn't really come up"]] },
     { id: "income", title: "Where does most of your income come from today?", sub: "Your biggest source right now.", options: [["Brand deals"], ["Platform payouts"], ["Coaching or clients"], ["My own products"], ["Not monetised yet"]] },
     { id: "live", title: "During a launch week, will you go live and show up?", sub: "Launches sell when you're in the room.", wide: true, options: [["Yes", "I can commit to that"], ["Probably", "Depends on the week"], ["No", "I'd rather not"]] },
-    { id: "details", title: "Last step: your details", sub: "So I can look at your account before we talk." }
+    { id: "details", title: "Last step: your details", sub: "So we can look at your account before we talk." }
   ];
   const points = {
     followers: { "Under 10k": 0, "10k to 50k": 20, "50k to 100k": 28, "100k to 300k": 30, "Over 300k": 22 },
@@ -691,7 +726,7 @@ const BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules
       (other ? '<div class="field"><label for="q-niche">Your niche</label><input id="q-niche" name="nicheOther" placeholder="e.g. parenting, travel, music" required value="' + v("nicheOther") + '"></div>' : "") +
       '<div class="trap" aria-hidden="true"><label for="q-company">Company</label><input id="q-company" name="company" tabindex="-1" autocomplete="off"></div>' +
       '</form><p class="q-error" id="q-error" role="alert"></p>' +
-      '<p class="q-small q-privacy">I only use these details to prepare your plan and contact you about it. <a href="privacy.html" target="_blank" rel="noopener">Privacy notice</a></p>' +
+      '<p class="q-small q-privacy">We only use these details to prepare your plan and contact you about it. <a href="privacy.html" target="_blank" rel="noopener">Privacy notice</a></p>' +
       '<div class="q-nav"><button type="button" class="q-back" data-back>Back</button><button type="button" class="btn" data-submit>See if we\'re a fit' + arrow + "</button></div></div>";
   };
 
@@ -712,8 +747,8 @@ const BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules
     return '<div class="screen result">' + mark +
       '<span class="tier">Shortlisted</span>' +
       '<h3 class="q-title" tabindex="-1">Good news, ' + name + '. You made the shortlist.</h3>' +
-      '<p>Your answers are promising, but the final answer depends on what I find when I go through your account. Not every shortlisted creator gets an offer.</p>' +
-      '<p>Pick a 30 minute call. I\'ll bring your one page plan and tell you straight if we\'re a fit.</p>' +
+      '<p>Your answers are promising, but the final answer depends on what we find when we go through your account. Not every shortlisted creator gets an offer.</p>' +
+      '<p>Pick a 30 minute call. We\'ll bring your one page plan and tell you straight if we\'re a fit.</p>' +
       '<a class="btn btn--book" href="' + esc(BOOKING_URL) + '" target="_blank" rel="noopener">Pick a call time' + arrow + "</a>" +
       '<p class="q-small" id="q-sent">Google Meet. Times show in your own time zone.</p></div>';
   };
@@ -723,7 +758,7 @@ const BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules
     fetch(FORM_ENDPOINT, { method: "POST", mode: "no-cors", body: data }).catch(() => {
       if (tries > 0) { setTimeout(() => send(data, tries - 1), 2500); return; }
       const note = document.getElementById("q-sent");
-      if (note) note.innerHTML = 'Your answers didn\'t reach us. Please <a href="https://ig.me/m/mypektas" target="_blank" rel="noopener">DM me &ldquo;PLAN&rdquo; on Instagram</a> so I can still prepare your plan.';
+      if (note) note.innerHTML = 'Your answers didn\'t reach us. Please <a href="https://ig.me/m/mypektas" target="_blank" rel="noopener">DM us &ldquo;PLAN&rdquo; on Instagram</a> so we can still prepare your plan.';
     });
   };
 
