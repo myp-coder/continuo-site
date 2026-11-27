@@ -151,7 +151,7 @@ p { margin: 0; }
 .stat dd { margin: 16px 0 0; color: var(--muted); max-width: 22em; text-wrap: pretty; }
 
 /* Proof */
-.proof { background: #0D0824; }
+.proof { background: linear-gradient(180deg, #0D0824 0%, var(--void) 100%); }
 .proof-grid { display: grid; grid-template-columns: minmax(260px, 400px) 1fr; gap: clamp(40px, 6vw, 88px); align-items: center; }
 .person { margin: 0; }
 .person-photo { border-radius: 20px; overflow: hidden; background: #1A1730; aspect-ratio: 1; border: 1px solid var(--line); }
@@ -166,13 +166,11 @@ p { margin: 0; }
 .mini dd { margin: 6px 0 0; font-size: 14px; color: var(--muted); max-width: 14em; }
 
 /* Founder */
-.founder { background: linear-gradient(180deg, var(--void) 0%, #0D0824 100%); }
+.founder { background: #0D0824; }
 .founder-grid { display: grid; grid-template-columns: 1fr minmax(260px, 440px); gap: clamp(40px, 6vw, 88px); align-items: center; }
 .founder-text { margin-top: 18px; color: var(--muted); max-width: 34em; text-wrap: pretty; }
-.promises { list-style: none; margin: 32px 0 0; padding: 0; display: grid; gap: 14px; max-width: 34em; }
-.promises li { position: relative; padding-left: 30px; color: #FFFFFF; font-weight: 500; }
-.promises li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 16px; height: 2px; border-radius: 2px; background: var(--grad); }
-.sign { margin-top: 36px; display: grid; gap: 2px; }
+.founder-line { margin-top: 26px; padding-left: 18px; border-left: 2px solid var(--violet); font-family: var(--font-head); font-weight: 500; font-size: clamp(19px, 1.8vw, 22px); line-height: 1.4; color: #FFFFFF; max-width: 28em; text-wrap: balance; }
+.sign { margin-top: 32px; display: grid; gap: 2px; }
 .sign strong { font-family: var(--font-head); font-weight: 500; font-size: 20px; color: #FFFFFF; }
 .sign span { font-size: 14px; color: var(--muted); }
 .founder-photo { margin: 0; border-radius: 20px; overflow: hidden; aspect-ratio: 1; background: var(--violet); }
@@ -400,6 +398,22 @@ p { margin: 0; }
   </div>
 </section>
 
+<section class="band founder" aria-labelledby="founder-title">
+  <div class="wrap founder-grid">
+    <div class="founder-copy">
+      <h2 id="founder-title" data-reveal>Why I started Continuo.</h2>
+      <p class="lead" data-reveal style="--i: 1">Creators do the hardest part of the work and keep the smallest part of the money. I want to change that.</p>
+      <p class="founder-text" data-reveal style="--i: 2">Your followers trust you. They ask how you do it, save your posts and copy what you do. That trust is worth a lot, but most of it gets rented out to brands one post at a time, and the income stops the day the deals do. The person who built the audience should earn the most from it.</p>
+      <p class="founder-text" data-reveal style="--i: 3">So Continuo is built as a partnership. We turn what you already teach into a program, coaching or community your followers can buy, and we build the systems that keep selling it: the offer, the checkout, the launch and the sales calls. Nothing upfront. We earn a share only when you do, so we only win if you win.</p>
+      <p class="founder-line" data-reveal style="--i: 4">Brand deals should be a bonus, not something you wait for every month.</p>
+      <p class="sign" data-reveal style="--i: 5"><strong>Mustafa Pektas</strong><span>Founder, Continuo</span></p>
+    </div>
+    <figure class="founder-photo" data-reveal="scale">
+      <img src="mustafa-pektas.jpg" alt="Mustafa Pektas, founder of Continuo" width="900" height="900" loading="lazy" decoding="async">
+    </figure>
+  </div>
+</section>
+
 <section class="band proof" aria-labelledby="proof-title">
   <div class="wrap proof-grid">
     <figure class="person" data-reveal="scale">
@@ -437,24 +451,6 @@ p { margin: 0; }
       <div><dt>Your brand</dt><dd>Stays yours. We never post on your accounts.</dd></div>
       <div><dt>If it doesn't sell</dt><dd>We earn nothing.</dd></div>
     </dl>
-  </div>
-</section>
-
-<section class="band founder" aria-labelledby="founder-title">
-  <div class="wrap founder-grid">
-    <div class="founder-copy">
-      <h2 id="founder-title" data-reveal>You work with me directly.</h2>
-      <p class="lead" data-reveal style="--i: 1">I'm Mustafa, the founder of Continuo. I'm Turkish, grew up in Saudi Arabia and I'm based in Dubai.</p>
-      <p class="founder-text" data-reveal style="--i: 2">Before Continuo, I recruited and onboarded partner companies for Odoo, running every step from the first message to the signed deal and the launch. Now I do the same for creators. I build the systems and close the sales, so you can keep creating.</p>
-      <ul class="promises" data-stagger>
-        <li>I study your account before we ever talk.</li>
-        <li>From the first call to launch day, you deal with me. No account managers.</li>
-      </ul>
-      <p class="sign" data-reveal><strong>Mustafa Pektas</strong><span>Founder, Continuo</span></p>
-    </div>
-    <figure class="founder-photo" data-reveal="scale">
-      <img src="mustafa-pektas.jpg" alt="Mustafa Pektas, founder of Continuo" width="900" height="900" loading="lazy" decoding="async">
-    </figure>
   </div>
 </section>
 
